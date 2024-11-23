@@ -76,7 +76,13 @@ func (s *Scraper) ScrapeAndSave(startURL string, outputPath string) error {
 	// Handle each page
 	c.OnHTML("a[href]", func(e *colly.HTMLElement) {
 		link := e.Attr("href")
-		e.Request.Visit(link)
+		if err := e.Request.Visit(link); err != nil {
+			// We can safely ignore the error here as it's usually due to:
+			// - Already visited URLs (handled by colly)
+			// - URLs outside allowed domain (handled by colly)
+			// - Malformed URLs (handled by colly)
+			return
+		}
 	})
 
 	c.OnError(func(r *colly.Response, err error) {

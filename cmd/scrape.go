@@ -44,7 +44,7 @@ var scrapeCmd = &cobra.Command{
 	Use:   "scrape [url]",
 	Short: "Scrape a website and convert pages to PDF",
 	Args:  cobra.ExactArgs(1),
-	RunE: func(cmd *cobra.Command, args []string) error {
+	RunE: func(_ *cobra.Command, args []string) error {
 		inputURL := args[0]
 
 		parsedURL, err := url.Parse(inputURL)
@@ -103,5 +103,5 @@ func init() {
 	scrapeCmd.Flags().BoolVar(&clean, "clean", false, "Remove lines with two words or less (requires --strip)")
 
 	// Make clean flag require strip flag
-	scrapeCmd.MarkFlagRequired("strip")
+	scrapeCmd.MarkFlagsRequiredTogether("clean", "strip")
 }

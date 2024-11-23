@@ -13,16 +13,15 @@ linters:
 run:
   deadline: 5m
   tests: true
-  skip-dirs:
-    - build/
 
 issues:
+  exclude-dirs:
+    - build/
   exclude-rules:
     - path: _test\.go
       linters:
         - errcheck
 
 output:
-  format: colored-line-number
   print-issued-lines: true
-  print-linter-name: true 
+  print-linter-name: true

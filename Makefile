@@ -4,7 +4,7 @@
 BINARY_NAME=webscraper
 
 # Build directory
-BUILD_DIR=build
+BUILD_DIR=bin
 
 # Go parameters
 GOCMD=go
