@@ -1,7 +1,7 @@
 .PHONY: all build lint clean
 
 # Binary name
-BINARY_NAME=webscraper
+BINARY_NAME=scrapdf
 
 # Build directory
 BUILD_DIR=bin

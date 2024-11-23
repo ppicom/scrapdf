@@ -52,7 +52,7 @@ func (s *Scraper) ScrapeAndSave(startURL string, outputPath string) error {
 	}
 
 	// Create a temporary directory for PDFs
-	tmpDir, err := os.MkdirTemp("", "webscraper")
+	tmpDir, err := os.MkdirTemp("", "scrapdf")
 	if err != nil {
 		return fmt.Errorf("failed to create temp directory: %w", err)
 	}
